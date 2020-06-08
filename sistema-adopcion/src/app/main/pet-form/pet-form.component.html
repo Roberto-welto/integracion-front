@@ -1,0 +1,68 @@
+<section class="title"></section>
+
+
+<section class="bg-gray">
+  <div class="container">
+    <h1 class="text-center">Ingresar una nueva Mascota {{nameInput}}</h1>
+    <form class="formPet" action="http://127.0.0.1:8000/pet" method="POST">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput required name="name" />
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label>Raza</mat-label>
+        <input matInput required name="name"/>
+      </mat-form-field>
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select>
+          <mat-option value="option">Option</mat-option>
+        </mat-select>
+      </mat-form-field> -->
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label>Edad</mat-label>
+        <input matInput required name="name"/>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill">
+        <mat-label>Descripcion</mat-label>
+        <textarea matInput required name="name"></textarea>
+      </mat-form-field>
+      <hr>
+      <label for="img">Imagen de tu Mascota</label>
+      <input type="file" name="img">
+      <hr>
+      <button class="btn btn-outline-primary mt-2">Donar</button>
+
+    </form>
+  </div>
+</section>
+
+
+<section class="bg-gray my-5">
+  <div class="container">
+    <div class="py-5">
+      <h1 class="text-center">Mis Mascotas en Adopcion</h1>
+    </div>
+    <div class="row">
+      <div class="col-4" *ngFor="let pet of pets">
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title>{{pet.name}}</mat-card-title>
+            <mat-card-subtitle> <b>Tipo de Animal</b> {{pet.type}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image [src]="pet.urlImg" />
+          <mat-card-content>
+            <p><b>Edad</b> {{ pet.age }}</p>
+            <p><b>Descripcion</b> {{ pet.description }}</p>
+            <button (click)="modifyPet(pet)" class="btn btn-outline-success">Modificar</button>
+            <button (click)="removeUser(pet.idPet)" class="btn btn-outline-danger">Eliminar</button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</section>

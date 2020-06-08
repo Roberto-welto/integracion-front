@@ -10,12 +10,14 @@ import { MaterialModules } from './modules/material.module';
 import { HomeComponent } from './main/home/home.component';
 import { HeaderComponent } from './main/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PetFormComponent } from './main/pet-form/pet-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    PetFormComponent
   ],
   imports: [
     BrowserModule,

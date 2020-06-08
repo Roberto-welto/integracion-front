@@ -8,6 +8,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   apiUrl: any;
+
+  pets:any[] = []
+
   constructor(
     private http: HttpClient
   ) { }
@@ -19,12 +22,10 @@ export class HomeComponent implements OnInit {
       "age": 1,
       "type": 'dog'
     }
-    this.http.get<any[]>(`${this.apiUrl}/getpet`).subscribe((res: any) => {
-      console.log(res)
-    })
+    this.http.get<any[]>(`${this.apiUrl}pet`).subscribe((res: any) => {
+      this.pets = res;
 
-    this.http.post<any[]>(`${this.apiUrl}/apitest/`, pet).subscribe((res: any) => {
-      console.log(res)
+      console.log(this.pets)
     })
   }
 
