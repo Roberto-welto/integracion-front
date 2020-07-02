@@ -10,12 +10,21 @@ import { MaterialModules } from './modules/material.module';
 import { HomeComponent } from './main/home/home.component';
 import { HeaderComponent } from './main/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { IndexComponent } from './main/mascotas/index/index.component';
+import { CreateComponent } from './main/mascotas/create/create.component';
+import { MatFileUploadModule } from 'angular-material-fileupload';
+import { DndDirective } from './directives/app-dnd/dnd.directive';
+import { ProgressBarComponent } from './main/mascotas/create/progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    IndexComponent,
+    CreateComponent,
+    DndDirective,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +32,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModules,
-
+    FormsModule,
+    ReactiveFormsModule,
+    MatFileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
