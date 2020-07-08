@@ -10,10 +10,21 @@
     aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleMenu()">
     <i></i></button> -->
     <div class="collapse navbar-collapse justify-content-end" id="navbar">
-      <ul class="navbar-nav ml-auto align-items-center">
-        <li><a class="nav-link">Inicio</a></li>
+      <ul class="navbar-nav align-items-center">
+        <li><a class="nav-link" routerLink="/" >Inicio</a></li>
         <li><a class="nav-link" routerLink="/newPet">Publicar una mascota</a></li>
-        <li><a class="nav-link">Mi Perfil</a></li>
+        <li><a class="nav-link">Donar</a></li>
+      </ul>
+      <ul class="navbar-nav ml-auto align-items-center">
+        <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
+          <li><a class="nav-link" routerLink="/signIn">SignIn</a></li>
+          <li><a class="nav-link" routerLink="/signUp">SignUp</a></li>
+        </ng-container>
+        <ng-template #loggedIn>
+          <li class="nav-item">
+            <a class="nav-link" (click)="authService.logout()">Logout</a>
+          </li>
+        </ng-template>
       </ul>
     </div>
   </div>

@@ -3,8 +3,8 @@
 
 <section class="bg-gray">
   <div class="container">
-    <h1 class="text-center">Ingresar una nueva Mascota {{nameInput}}</h1>
-    <form class="formPet" action="http://127.0.0.1:8000/pet" method="POST">
+    <h1 class="text-center">Ingresar una nueva Mascota</h1>
+    <form class="formPet" action="http://127.0.0.1:8000/pet/" method="POST">
       <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
         <input matInput required name="name" />
@@ -31,12 +31,12 @@
         <mat-label>Descripcion</mat-label>
         <textarea matInput required name="name"></textarea>
       </mat-form-field>
-      <hr>
-      <label for="img">Imagen de tu Mascota</label>
-      <input type="file" name="img">
-      <hr>
-      <button class="btn btn-outline-primary mt-2">Donar</button>
-
+      <mat-form-field appearance="fill">
+        <mat-label>urlImg</mat-label>
+        <input matInput required name="urlImg"/>
+      </mat-form-field>
+      <input type="hidden" [value]="userId" name="idUser">
+      <button type="submit" class="btn btn-outline-primary mt-2">Donar</button>
     </form>
   </div>
 </section>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Pet } from 'src/app/models/Pet';
+import {FormGroup, FormControl} from '@angular/forms'
 
 @Component({
   selector: 'app-pet-form',
@@ -13,6 +14,9 @@ export class PetFormComponent implements OnInit {
   userId:number = 1;
   pets: Pet[] = [];
 
+  // formGroup = new FormGroup({
+  //   name: new FormControl('')
+  // });
 
   constructor(public http: HttpClient) { }
   ngOnInit() {
@@ -35,10 +39,12 @@ export class PetFormComponent implements OnInit {
     this.ngOnInit();
   }
 
-  addPet(formData){
-    this.http.post<any[]>(`${this.apiUrl}user_pets/${this.userId}`, formData).subscribe((res: any) => {
-      this.pets = res;
-    })
-  }
+
+  // addPet(post)
+  // {
+  //   this.http.post<any[]>(`${this.apiUrl}user_pets/`, post).subscribe((res: any) => {
+  //     this.pets = res;
+  //   })
+  // }
 
 }

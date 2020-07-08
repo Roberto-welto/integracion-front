@@ -1,0 +1,38 @@
+<section class="container jumbotron mx-auto mt-5">
+  <h1 class="text-center">Crea tu cuenta</h1>
+  <form class="formPet" (submit) = "onSignUp()">
+    <mat-form-field appearance="standard">
+      <mat-label>Correo</mat-label>
+      <input matInput [(ngModel)] = "user.email" required name="email" />
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="standard">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" [(ngModel)] = "user.password" required name="password"/>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="standard">
+      <mat-label>Rut</mat-label>
+      <input matInput required name="rut" [(ngModel)] = "user.rut"  placeholder="12345678-9"/>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="standard">
+      <mat-label>Direccion</mat-label>
+      <input matInput required name="rut" [(ngModel)] = "user.direccion" placeholder="Calle Falsa 123"/>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="standard">
+      <mat-label>Correo</mat-label>
+      <input matInput required [(ngModel)] = "user.correo" name="email" />
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Comunas</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let comuna of comunas" value="comuna.id">{{comuna.nombre_comuna}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button  color="primary">Sign-Up</button>
+  </form>
+</section>
