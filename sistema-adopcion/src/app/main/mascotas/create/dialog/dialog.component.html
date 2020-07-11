@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h5>Estas a punto de ingresar una mascota en nuestro sistema de adopción!</h5>
+    </div>
+    <div class="col-12">
+      <p>A continuacion puedes verificar que toda la información ingresada es correcta.</p>
+      <p>Si toda la información ingresada es correcta solo presiona aceptar, en caso de algun error puedes revisar el formulario nuevamente.</p>
+    </div>
+    <div class="col-12">
+      <p>Nombre: {{ mascota.nombre }} </p>
+      <p>Edad: {{ mascota.edad}} </p>
+      <p>Tipo de mascota: {{ mascota.tipo_mascota_id }} </p>
+      <p>Descripción: {{ mascota.descripcion }} </p>
+      <p>Fotografías</p>
+    </div>
+
+    <img src="{{imagen['b64']}}" alt="" class="col-3" *ngFor="let imagen of imagenes">
+
+    <div class="col-12 mt-2">
+      <button class="btn btn-primary btn-sm float-right" (click)="success()">Aceptar</button>
+      <button class="btn btn-secondary btn-sm float-left" (click)="error()">Cancelar</button>
+  </div>
+</div>
+</div>

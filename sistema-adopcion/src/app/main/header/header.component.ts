@@ -15,4 +15,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  goTo(event) {
+    if (event == 'home') {
+      window.location.href = window.location.origin
+    } else if (event == 'acercaDe') {
+      window.location.href = `${window.location.origin}/acerca-de`
+    }
+  }
 }

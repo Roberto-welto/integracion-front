@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-home',
@@ -16,17 +17,19 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiUrl = " http://127.0.0.1:8000/";
     let pet = {
+      "idPet": 1,
       "name": "Tikki",
-      "age": 1,
-      "type": 'dog'
-    }
-    this.http.get<any[]>(`${this.apiUrl}pet`).subscribe((res: any) => {
-      this.pets = res;
-
-      console.log(this.pets)
-    })
+      "type": 'dog',
+      "description": 'Mi mascota',
+      "age": '1',
+      "urlImg": 'None',
+      //"user_id": 1
+      }
+    // this.http.get<any[]>(`${this.apiUrl}/getpets`).subscribe((res: any) => {
+    //   console.log(res)
+    // })
+    let md5 = Md5.hashStr('1303')
   }
 
 }

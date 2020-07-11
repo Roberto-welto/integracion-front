@@ -1,0 +1,80 @@
+<section class="title"></section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+    <div class="col-12">
+      <form [formGroup]="mascotaForm">
+          <div class="row">
+            <div class="col-4">
+              <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input type="text" matInput formControlName="nombre"
+                  placeholder="tocino">
+              </mat-form-field>
+            </div>
+            <div class="col-4">
+              <mat-form-field appearance="outline">
+                <mat-label>Edad</mat-label>
+                <input type="number" matInput formControlName="edad"
+                placeholder="1">
+              </mat-form-field>
+            </div>
+            <div class="col-4">
+              <mat-form-field appearance="outline">
+                <mat-label>Tipo de mascota</mat-label>
+                <mat-select formControlName="tipoMascota">
+                  <mat-option [value]="tipoMascota.id"
+                  *ngFor="let tipoMascota of tipoMascotas">
+                    {{ tipoMascota.nombre_tipo_mascota }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Descripcion</mat-label>
+                <textarea matInput cols="100" rows="10" formControlName="descripcion"></textarea>
+              </mat-form-field>
+            </div>
+            <div class="col-6"> 
+              <div class="dropzone" appDnd (fileDropped)="onFileDropped($event)">
+                <input class="input-file" type="file" formControlName="archivos" multiple #fileDropRef id="fileDropRef" (change)="fileBrowseHandler($event.target.files)" >
+                <h3 class="h3-file">Arrastra los archivos aqui</h3>
+                <h3 class="h3-file">O busca un archivo en tu equipo</h3>
+                <label class="label-file" for="fileDropRef">Buscar archivo</label>
+              </div>
+              <div *ngIf="documentos.length > 0">
+                <div class="row">
+                  <div class="col-12 mt-1">
+                    <img class="imgGallery mx-2" src="{{image.b64}}" *ngFor="let image of documentos; let i = index">
+                  </div>
+                </div>
+              </div>
+              <div class="lista-archivos row">
+                <div class="archivo col-3  mx-2" *ngFor="let documento of documentos; let i = index">
+                  <div class="info">
+                    <h6 class="nombre_archivo">
+                      Nombre documento: {{ documento.name }}
+                    </h6>
+                    <p class="tamaño">
+                      Tamaño: {{ formatBytes(documento.size) }}
+                    </p>
+                    <app-progress-bar [progress]="documento.progress"></app-progress-bar>
+                  </div>
+                  <div class="borrar">
+                    <p>X</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-primary btn-sm float-right" (click)="addMascota()">Agregar</button>
+              <button class="btn btn-secondary btn-sm float-left">Cancelar</button>
+            </div>
+          </div>
+      </form>
+    </div>
+    </div>
+  </div>
+</section>
