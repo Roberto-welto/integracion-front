@@ -1,6 +1,6 @@
 header {
   .header-nav {
-    // background: #f3f3f3;
+    background: #fff;
     border-bottom: 3px solid #3ca7ac;
     font-family: 'DIN', 'Roboto', Arial, sans-serif;
     font-size: 0.9375rem;
@@ -10,7 +10,7 @@ header {
     right: 0;
     top: 0;
     z-index: 999;
-    
+
     a {
       color: #007bff;
       transition: ease all 0.3s;
@@ -28,7 +28,7 @@ header {
 
 
       // &.active {
-        
+
       // }
       // &:hover {
 
@@ -37,7 +37,7 @@ header {
 
 
   }
-  
+
   &.transparent {
     .header-nav {
       border-bottom: 1px solid #ccc;

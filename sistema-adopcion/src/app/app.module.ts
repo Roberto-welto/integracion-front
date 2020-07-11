@@ -17,6 +17,8 @@ import { DndDirective } from './directives/app-dnd/dnd.directive';
 import { ProgressBarComponent } from './main/mascotas/create/progress-bar/progress-bar.component';
 import { DialogComponent } from './main/mascotas/create/dialog/dialog.component'
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     HeaderComponent,
     IndexComponent,
     CreateComponent,
+    SignInComponent,
+    SignUpComponent,
     DialogComponent,
     DndDirective,
     ProgressBarComponent,

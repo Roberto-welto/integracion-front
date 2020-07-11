@@ -9,6 +9,9 @@ import { Md5 } from 'ts-md5/dist/md5';
 })
 export class HomeComponent implements OnInit {
   apiUrl: any;
+
+  pets:any[] = []
+
   constructor(
     private http: HttpClient
   ) { }

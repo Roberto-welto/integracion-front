@@ -29,10 +29,10 @@ export class IndexComponent implements OnInit {
   obtenerMascotas() {
     this.mascotaService.all().subscribe((res: any) => {
       this.mascotas = res;
-      this.mascotas.forEach((mascota, index) => {
-    
-      })
     })
   }
   
+  detalle() {
+    
+  }
 }
