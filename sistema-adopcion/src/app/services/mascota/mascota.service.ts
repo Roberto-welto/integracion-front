@@ -30,8 +30,9 @@ export class MascotaService {
         )
     }
 
-    update(mascota) {
-      return this.http.put<any[]>(`${this.apiUrl}/pet`, mascota)
+    update(mascota, img?) {
+      img = img == "" ? null : img;
+      return this.http.put<any[]>(`${this.apiUrl}/pet?img=${img}`, mascota)
         .pipe(
           catchError(this.handleError)
         )

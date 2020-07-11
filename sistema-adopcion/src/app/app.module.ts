@@ -15,6 +15,8 @@ import { CreateComponent } from './main/mascotas/create/create.component';
 import { MatFileUploadModule } from 'angular-material-fileupload';
 import { DndDirective } from './directives/app-dnd/dnd.directive';
 import { ProgressBarComponent } from './main/mascotas/create/progress-bar/progress-bar.component';
+import { DialogComponent } from './main/mascotas/create/dialog/dialog.component'
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,13 @@ import { ProgressBarComponent } from './main/mascotas/create/progress-bar/progre
     HeaderComponent,
     IndexComponent,
     CreateComponent,
+    DialogComponent,
     DndDirective,
-    ProgressBarComponent
+    ProgressBarComponent,
+    SafeHtmlPipe,
+  ],
+  entryComponents: [
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,7 @@ import { ProgressBarComponent } from './main/mascotas/create/progress-bar/progre
     MaterialModules,
     FormsModule,
     ReactiveFormsModule,
-    MatFileUploadModule
+    MatFileUploadModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

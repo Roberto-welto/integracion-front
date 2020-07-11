@@ -16,6 +16,10 @@ export class IndexComponent implements OnInit {
               private http: HttpClient          
 
               ) { }
+  
+  public getSanitizedUrl(url: string) {
+    return this.sanitization.bypassSecurityTrustUrl(url)
+  }
 
   ngOnInit() {
     this.obtenerMascotas();
@@ -25,6 +29,9 @@ export class IndexComponent implements OnInit {
   obtenerMascotas() {
     this.mascotaService.all().subscribe((res: any) => {
       this.mascotas = res;
+      this.mascotas.forEach((mascota, index) => {
+    
+      })
     })
   }
   

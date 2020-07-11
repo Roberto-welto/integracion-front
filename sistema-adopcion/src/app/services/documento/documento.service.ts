@@ -9,7 +9,7 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class DocumentoService {
-
+  apiUrl = " http://127.0.0.1:8000";
   constructor(
     private router: Router,
     private http: HttpClient)
@@ -28,6 +28,11 @@ export class DocumentoService {
     )
    }
 
+   getUrl(mascota) {
+    return this.http.put<any[]>(`${this.apiUrl}/doc`, mascota).pipe(
+      catchError(this.handleError)
+    )
+   }
    handleError(error: any) {
     if (this.router) {
       const currentUrl = this.router.routerState.snapshot.url;

@@ -2,18 +2,20 @@
 
 <section class="bg-gray py-5">
   <div class="container">
-    <div class="col-4" *ngFor="let mascota of mascotas">
+    <div class="row">
+    <div class="col-4 my-2" *ngFor="let mascota of mascotas; let i = index">
       <mat-card class="card">
         <mat-card-header>
-          <div mat-card-avatar style="  background-image: url('https://s3.amazonaws.com/sistema.adopcion/43/funny-naughty-dog-pictures-download.jpg');   background-size: cover;"></div>
+          <!-- <div mat-card-avatar id="avatar {{i}}" style="background-image: url('{{ mascota.imagenes[0].ruta_s3 }}');   background-size: cover;"></div> -->
           <mat-card-title>{{ mascota.nombre }}</mat-card-title>
           <mat-card-subtitle>Example subtitle</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="https://s3.amazonaws.com/sistema.adopcion/43/funny-naughty-dog-pictures-download.jpg" alt="mascota_img">
+        <img mat-card-image src="{{ mascota.imagenes[0]['ruta_s3']}}" alt="mascota_img">
         <mat-card-content>
           {{ mascota.descripcion }}
         </mat-card-content>
       </mat-card>
     </div>
+  </div>
   </div>
 </section>

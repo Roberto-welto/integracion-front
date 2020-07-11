@@ -3,6 +3,8 @@ import { MascotaService } from 'src/app/services/mascota/mascota.service';
 import { DocumentoService } from 'src/app/services/documento/documento.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { TipoMascotaService } from 'src/app/services/tipo_mascota/tipo-mascota.service';
+import { MatDialog } from '@angular/material';
+import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
   selector: 'app-create',
@@ -15,9 +17,11 @@ export class CreateComponent implements OnInit {
   documentos: any[];
   constructor(private mascotaService: MascotaService,
               private documentoService: DocumentoService,
-              private tipoMascotaService: TipoMascotaService) { }
+              private tipoMascotaService: TipoMascotaService,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.documentos = [];
     this.mascotaForm = new FormGroup({
       nombre: new FormControl(''),
       edad: new FormControl(''),
@@ -28,51 +32,33 @@ export class CreateComponent implements OnInit {
     this.obtenerTipoMascotas();
   }
 
-  changeEvents(e: any) {
-    let documentos = e;
-    let mascota = [{
-      "nombre": "tikki",
-      "tipo_mascota_id": 2,
-      "descripcion": "Perro buffalo",
-      "edad": 1
-    }]
-    console.log(mascota)
-    this.mascotaService.post(mascota).subscribe((res: any) => {
-      console.log(res)
-      let mascotaPut = res;
-      console.log(mascotaPut)
-      console.log(documentos)
-      mascotaPut['documentos'] = documentos;
-      if(documentos.length > 0) {
-        for(let i = 0, documento; documento=documentos[i]; i++) {
-          mascotaPut["objKey"] = `${mascotaPut.id}/${documento.name}`
-          this.mascotaService.update(mascotaPut).subscribe((res: any) => {
-            this.documentoService.upload(res, documento).subscribe((res: any) => {
-              console.log(res)
-              console.log('success')
-            })
-          })
-        }
-      }
-    })
-  }
 
   onFileDropped(event) {
-    this.documentos = [];
     for (const archivo of event) {
       archivo['progress'] = 0;
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        archivo['b64'] = e.target['result']
+      }
+      reader.readAsDataURL(archivo);
       this.documentos.push(archivo);
+      console.log(this.documentos)
     }
     this.progress(0);
   }
 
   fileBrowseHandler(event) {
-    this.documentos = [];
     for (const archivo of event) {
       archivo['progress'] = 0;
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        archivo['b64'] = e.target['result']
+      }
+      reader.readAsDataURL(archivo);
       this.documentos.push(archivo);
       console.log(this.documentos)
     }
+
     this.progress(0);
   }
 
@@ -108,5 +94,66 @@ export class CreateComponent implements OnInit {
         }, 100);
       }
     }, 600);
+  }
+
+  addMascota() {
+    const mascota = { 
+      'nombre': this.mascotaForm.value.nombre,
+      'edad': this.mascotaForm.value.edad,
+      'tipo_mascota_id': this.mascotaForm.value.tipoMascota,
+      'descripcion': this.mascotaForm.value.descripcion
+    }
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '500px',
+      data: [ mascota, this.documentos ]
+    })
+
+    dialogRef.afterClosed().subscribe((res: any) => {
+      if(res == 'success') {
+        this.mascotaService.post(mascota).subscribe((res: any) => {
+          let mascotaPut = res;
+          console.log(mascotaPut)
+          console.log(this.documentos)
+          if (this.documentos.length > 0) {
+            for(let i = 0, doc; doc=this.documentos[i]; i++) {
+              mascotaPut['documento'] = {}; 
+              mascotaPut['documento']['name'] = doc.name;
+              mascotaPut['documento']['objKey'] = `${mascotaPut['id']}/${doc.name}`;
+              mascotaPut['documento']['ruta_s3'] = `https://s3.amazonaws.com/sistema.adopcion/${mascotaPut['id']}/${doc.name}`;
+              console.log(mascotaPut)
+              this.documentoService.getUrl(mascotaPut).subscribe((res: any) => {
+                this.documentoService.upload(res, doc).subscribe((res: any) => {
+                  this.mascotaService.update(mascotaPut, 'true').subscribe((res: any) => {
+                    console.log(res)
+                  })
+                })
+              })
+             }
+          }
+        })
+      } 
+    })
+
+    // this.mascotaService.post(mascota).subscribe((res: any) => {
+    //   let mascotaPut = res;
+    //   console.log(mascotaPut)
+    //   console.log(this.documentos)
+    //   if (this.documentos.length > 0) {
+    //     for(let i = 0, doc; doc=this.documentos[i]; i++) {
+    //       mascotaPut['documento'] = {}; 
+    //       mascotaPut['documento']['name'] = doc.name;
+    //       mascotaPut['documento']['objKey'] = `${mascotaPut['id']}/${doc.name}`;
+    //       mascotaPut['documento']['ruta_s3'] = `https://s3.amazonaws.com/sistema.adopcion/${mascotaPut['id']}/${doc.name}`;
+    //       console.log(mascotaPut)
+    //       this.documentoService.getUrl(mascotaPut).subscribe((res: any) => {
+    //         this.documentoService.upload(res, doc).subscribe((res: any) => {
+    //           this.mascotaService.update(mascotaPut, 'true').subscribe((res: any) => {
+    //             console.log(res)
+    //           })
+    //         })
+    //       })
+    //      }
+    //   }
+    // })
   }
 }

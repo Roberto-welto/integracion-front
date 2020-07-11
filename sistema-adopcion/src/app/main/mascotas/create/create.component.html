@@ -1,6 +1,6 @@
 <section class="title"></section>
 
-<section>
+<section class="py-5">
   <div class="container">
     <div class="row">
     <div class="col-12">
@@ -44,8 +44,15 @@
                 <h3 class="h3-file">O busca un archivo en tu equipo</h3>
                 <label class="label-file" for="fileDropRef">Buscar archivo</label>
               </div>
-              <div class="lista-archivos">
-                <div class="archivo" *ngFor="let documento of documentos; let i = index">
+              <div *ngIf="documentos.length > 0">
+                <div class="row">
+                  <div class="col-12 mt-1">
+                    <img class="imgGallery mx-2" src="{{image.b64}}" *ngFor="let image of documentos; let i = index">
+                  </div>
+                </div>
+              </div>
+              <div class="lista-archivos row">
+                <div class="archivo col-3  mx-2" *ngFor="let documento of documentos; let i = index">
                   <div class="info">
                     <h6 class="nombre_archivo">
                       Nombre documento: {{ documento.name }}
@@ -60,6 +67,10 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-primary btn-sm float-right" (click)="addMascota()">Agregar</button>
+              <button class="btn btn-secondary btn-sm float-left">Cancelar</button>
             </div>
           </div>
       </form>
