@@ -133,27 +133,5 @@ export class CreateComponent implements OnInit {
         })
       } 
     })
-
-    // this.mascotaService.post(mascota).subscribe((res: any) => {
-    //   let mascotaPut = res;
-    //   console.log(mascotaPut)
-    //   console.log(this.documentos)
-    //   if (this.documentos.length > 0) {
-    //     for(let i = 0, doc; doc=this.documentos[i]; i++) {
-    //       mascotaPut['documento'] = {}; 
-    //       mascotaPut['documento']['name'] = doc.name;
-    //       mascotaPut['documento']['objKey'] = `${mascotaPut['id']}/${doc.name}`;
-    //       mascotaPut['documento']['ruta_s3'] = `https://s3.amazonaws.com/sistema.adopcion/${mascotaPut['id']}/${doc.name}`;
-    //       console.log(mascotaPut)
-    //       this.documentoService.getUrl(mascotaPut).subscribe((res: any) => {
-    //         this.documentoService.upload(res, doc).subscribe((res: any) => {
-    //           this.mascotaService.update(mascotaPut, 'true').subscribe((res: any) => {
-    //             console.log(res)
-    //           })
-    //         })
-    //       })
-    //      }
-    //   }
-    // })
   }
 }

@@ -38,7 +38,14 @@ $sistema-adopcion-theme: mat-light-theme($sistema-adopcion-primary, $sistema-ado
 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+  background-image: url('https://s3.amazonaws.com/sistema.adopcion/face-white-cat-eyes-space-minimalism-dog-grey-hair-Jack-Flash-pet-empty-triptych-negative-long-animal-two-removedfromstrobistpool-d7000-cats-kitten-small-minimal-three-fluffy-sigma-mammal-russell-stripe-minimalist-.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+ }
 
 .title {
   padding: 85px 0 65px;

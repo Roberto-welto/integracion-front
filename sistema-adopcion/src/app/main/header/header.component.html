@@ -11,19 +11,19 @@
     <i></i></button> -->
     <div class="collapse navbar-collapse justify-content-end" id="navbar">
       <ul class="navbar-nav align-items-center">
-        <li><a class="nav-link">Inicio</a></li>
+        <li><a class="nav-link" routerLink="/">Inicio</a></li>
         <li><a class="nav-link" routerLink="mascotas/create">Publicar una mascota</a></li>
         <li><a class="nav-link" routerLink="mascotas/index">Adoptar una mascota</a></li>
         <li><a class="nav-link">Donar</a></li>
       </ul>
       <ul class="navbar-nav ml-auto align-items-center">
         <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
-          <li><a class="nav-link" routerLink="/signIn">SignIn</a></li>
-          <li><a class="nav-link" routerLink="/signUp">SignUp</a></li>
+          <li><a class="nav-link" routerLink="/signIn">Iniciar Sesíon</a></li>
+          <li><a class="nav-link" routerLink="/signUp">Registrarse</a></li>
         </ng-container>
         <ng-template #loggedIn>
           <li class="nav-item">
-            <a class="nav-link" (click)="authService.logout()">Logout</a>
+            <a class="nav-link" (click)="authService.logout()">Cerrar Sesíon</a>
           </li>
         </ng-template>
       </ul>

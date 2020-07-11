@@ -12,7 +12,8 @@
         </mat-card-header>
         <img mat-card-image src="{{ mascota.imagenes[0]['ruta_s3']}}" alt="mascota_img">
         <mat-card-content>
-          {{ mascota.descripcion }}
+         <p>{{ mascota.descripcion }}</p>
+         <button class="btn btn-primary btn-sm">Adoptar</button>
         </mat-card-content>
       </mat-card>
     </div>

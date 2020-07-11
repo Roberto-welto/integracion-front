@@ -1,22 +1,59 @@
-<section class="title"></section>
+<section class="title">  
+</section>
 
 <section class="bg-gray py-5">
   <div class="container">
     <div class="row">
-      <div class="col-4" *ngFor="let pet of pets">
+      <div class="col-4">
         <mat-card class="card">
           <mat-card-header>
-            <mat-card-title>{{pet.name}}</mat-card-title>
-            <mat-card-subtitle> <b>Tipo de Animal</b> {{pet.type}}</mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image [src]="pet.urlImg" />
-          <mat-card-content>
-            <p><b>Edad</b> {{ pet.age }}</p>
-            <p><b>Descripcion</b> {{ pet.description }}</p>
-            <button class="btn btn-outline-primary">Adoptar</button>
-          </mat-card-content>
-        </mat-card>
-      </div>
+          <div mat-card-avatar></div>
+          <mat-card-title>Example title</mat-card-title>
+          <mat-card-subtitle>Example subtitle</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://media3.s-nbcnews.com/i/newscms/2017_46/2226586/171114-dog-in-car-window-ac-552p_51cb823983598f37eb33fef79fc020ec.jpg" alt="Photo of a happy dog">
+        <mat-card-content>
+          <p>
+            Example content
+          </p>
+          <button class="btn btn-outline-primary">Adoptar un perro</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    
+    <div class="col-4">
+      <mat-card class="card">
+        <mat-card-header>
+          <div mat-card-avatar></div>
+          <mat-card-title>Example title</mat-card-title>
+          <mat-card-subtitle>Example subtitle</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://s3.amazonaws.com/sistema.adopcion/148140.jpg" alt="Photo of a happy cat">
+        <mat-card-content>
+          <p>
+            Example content
+          </p>
+          <button class="btn btn-outline-primary">Adoptar un gato</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-4">
+      <mat-card class="card">
+        <mat-card-header>
+          <div mat-card-avatar></div>
+          <mat-card-title>Example title</mat-card-title>
+          <mat-card-subtitle>Example subtitle</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://www.countrycommunities.com/wp-content/uploads/2018/09/cat-and-dog.jpg" alt="Donar">
+        <mat-card-content>
+          <p>
+            Example content
+          </p>
+          <button class="btn btn-outline-primary">Donar</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
     </div>
   </div>
 </section>
