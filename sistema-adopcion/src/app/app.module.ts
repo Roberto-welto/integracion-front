@@ -20,6 +20,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { DonacionModalComponent } from './main/donacion/donacion-modal/donacion-modal.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { DonacionModalComponent } from './main/donacion/donacion-modal/donacion-
     DonacionModalComponent,
   ],
   entryComponents: [
-    DialogComponent
+    DialogComponent,
+    DonacionModalComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { DonacionModalComponent } from './main/donacion/donacion-modal/donacion-
     FormsModule,
     ReactiveFormsModule,
     MatFileUploadModule,
+    NgxPayPalModule
   ],
   providers: [],
   bootstrap: [AppComponent]
