@@ -31,5 +31,11 @@
       }
     </style> -->
   </app-root>
+
+  <script src="https://js.stripe.com/v3/"></script>
+  <script type="text/javascript">
+    var stripe = Stripe('pk_test_51H4C4TF9yxhZlW6nbwFgfAgVHU2fjHo66A85v7hI8qqM8uYlH4yU1Cg7kfmkDuuNvW9QyRfASjqcdqtMG6casC8u00qXJpZ1qL'); // use your test publishable key
+    var elements = stripe.elements();
+  </script>
 </body>
 </html>
