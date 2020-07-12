@@ -1,15 +1,25 @@
-  <section class="container jumbotron mx-auto mt-5">
-    <h1 class="text-center">Iniciar Sesion</h1>
-    <form class="formPet" action="http://127.0.0.1:8000/pet/" method="POST" (submit) = "onSignIn()">
-      <mat-form-field appearance="standard">
-        <mat-label>Correo</mat-label>
-        <input matInput required name="email" [(ngModel)]="user.email"  />
-      </mat-form-field>
-      <br />
-      <mat-form-field appearance="standard">
-        <mat-label>Contraseña</mat-label>
-        <input matInput type="password" required name="password" [(ngModel)]="user.password"/>
-      </mat-form-field>
-      <button class="btn btn-primary btn-sm">Iniciar Sesíon</button>
-    </form>
+ <section class="title"></section>
+
+ <section>
+   <div class="container">
+     <mat-card class="card mx-auto my-5">
+       <mat-card-header>
+         <mat-card-title>Iniciar Sesíon</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="userForm" class="formPet">
+            <mat-form-field appearance="standard">
+              <mat-label>Correo</mat-label>
+              <input matInput formControlName="userName"/>
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="standard">
+              <mat-label>Contraseña</mat-label>
+              <input matInput formControlName="password"/>
+            </mat-form-field>
+            <button class="btn btn-primary btn-sm" (click)="signIn()">Iniciar Sesíon</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </section>

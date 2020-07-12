@@ -5,13 +5,14 @@ import { IndexComponent } from './main/mascotas/index/index.component';
 import { CreateComponent } from './main/mascotas/create/create.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
   {path: 'mascotas', children: [
     {path: 'index', component: IndexComponent},
-    {path: 'create', component: CreateComponent}
+    {path: 'create', component: CreateComponent, canActivate: [AuthGuard] }
   ]},
   { path: 'signIn', component: SignInComponent},
   { path: 'signUp', component: SignUpComponent}

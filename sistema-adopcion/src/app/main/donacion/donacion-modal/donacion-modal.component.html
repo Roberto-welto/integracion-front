@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="donacionForm">
+        <div class="row">
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Cantidad</mat-label>
+              <input type="number" matInput formControlName="cantidad">
+            </mat-form-field>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary btn-sm float-right" (click)="pagar()">Pagar</button>
+            <button class="btn btn-secondary btn-sm float-left">Cancelar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
