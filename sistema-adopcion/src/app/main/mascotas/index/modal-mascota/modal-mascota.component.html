@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h5>Nombre Mascota</h5>
+    </div>
+    <div class="col-12">
+      <h6>¡A continuacion puedes revisar la información de {{ mascota.nombre }}!</h6>
+      <p>Si crees que {{ mascota.nombre }} podría ser una excelente adicion a tu familia, no dudes en comenzar el proceso de adopción!.</p>
+    </div>
+    <div class="col-12">
+      <p>Edad: {{ mascota.edad}} </p>
+      <p>Tipo de mascota: {{ mascota.tipo_mascota }} </p>
+      <p>Descripción: {{ mascota.descripcion }} </p>
+      <p>Fotografías</p>
+    </div>
+
+    <img src="{{imagen['ruta_s3']}}" alt="" class="col-3" *ngFor="let imagen of imagenes" (click)="openImage()">
+
+    <div class="col-12 mt-2">
+      <button class="btn btn-primary btn-sm float-right" (click)="adoptar()">Comenzar</button>
+      <button class="btn btn-secondary btn-sm float-left" (click)="cerrar()">Cerrar</button>
+  </div>
+</div>
+</div>
