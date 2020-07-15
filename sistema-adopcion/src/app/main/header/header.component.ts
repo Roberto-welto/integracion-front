@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/authservice/auth.service';
 import { DonarService } from 'src/app/services/donar/donar.service';
+import { MatDialog } from '@angular/material';
+import { DonacionModalComponent } from '../donacion/donacion-modal/donacion-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +13,8 @@ export class HeaderComponent implements OnInit {
   @Input() type: string;
   constructor(
     private authService: AuthService,
-    private donacionService: DonarService
+    private donacionService: DonarService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -30,8 +33,11 @@ export class HeaderComponent implements OnInit {
   }
 
   donar() {
-    this.donacionService.donar().subscribe((res: any) => {
-      console.log(res)
+    // this.donacionService.donar().subscribe((res: any) => {
+    //   console.log(res)
+    // })
+    this.dialog.open(DonacionModalComponent, {
+      width: '500px',
     })
   }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MascotaService } from 'src/app/services/mascota/mascota.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material';
+import { ModalMascotaComponent } from './modal-mascota/modal-mascota.component';
 
 @Component({
   selector: 'app-index',
@@ -13,8 +15,8 @@ export class IndexComponent implements OnInit {
 
   constructor(private mascotaService: MascotaService,
               private sanitization: DomSanitizer,
-              private http: HttpClient          
-
+              private http: HttpClient,       
+              public dialogRef: MatDialog
               ) { }
   
   public getSanitizedUrl(url: string) {
@@ -32,7 +34,11 @@ export class IndexComponent implements OnInit {
     })
   }
   
-  detalle() {
-    
+  mostrarDetalle(mascota) {
+    this.dialogRef.open(ModalMascotaComponent, {
+      width: '1000px',
+      height: 'auto',
+      data: mascota
+    })
   }
 }
