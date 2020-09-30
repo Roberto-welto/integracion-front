@@ -112,19 +112,22 @@ export class CreateComponent implements OnInit {
       if(res == 'success') {
         this.mascotaService.post(mascota).subscribe((res: any) => {
           let mascotaPut = res;
-          console.log(mascotaPut)
-          console.log(this.documentos)
+          // console.log(mascotaPut)
+          // console.log(this.documentos)
           if (this.documentos.length > 0) {
+            mascotaPut['documento'] = [{}];
             for(let i = 0, doc; doc=this.documentos[i]; i++) {
-              mascotaPut['documento'] = {}; 
-              mascotaPut['documento']['name'] = doc.name;
-              mascotaPut['documento']['objKey'] = `${mascotaPut['id']}/${doc.name}`;
-              mascotaPut['documento']['ruta_s3'] = `https://s3.amazonaws.com/sistema.adopcion/${mascotaPut['id']}/${doc.name}`;
-              console.log(mascotaPut)
-              this.documentoService.getUrl(mascotaPut).subscribe((res: any) => {
+              mascotaPut['documento'][i] = {}; 
+              mascotaPut['documento'][i]['name'] = doc.name;
+              mascotaPut['documento'][i]['objKey'] = `${mascotaPut['id']}/${doc.name}`;
+              mascotaPut['documento'][i]['ruta_s3'] = `https://s3.amazonaws.com/sistema.adopcion/${mascotaPut['id']}/${doc.name}`;
+              console.log(mascotaPut['documento']['ruta_s3'])
+              this.documentoService.getUrl(mascotaPut['documento'][i]).subscribe((res: any) => {
                 this.documentoService.upload(res, doc).subscribe((res: any) => {
+                  mascotaPut['documentoPut'] = {}; 
+                  mascotaPut['documentoPut'] = mascotaPut['documento'][i];
                   this.mascotaService.update(mascotaPut, 'true').subscribe((res: any) => {
-                    console.log(res)
+                    // console.log(res)
                   })
                 })
               })

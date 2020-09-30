@@ -15,7 +15,14 @@ export class ModalImgComponent implements OnInit {
 
   ngOnInit() {
     this.imagenes = this.data;
-    console.log(this.imagenes[0]['ruta_s3'])
+    // console.log(this.imagenes[0]['ruta_s3'])
   }
 
+  cambiarImgIzq() {
+    console.log(1)
+  }
+
+  cambiarImgDer() {
+    console.log(2)
+  }
 }
