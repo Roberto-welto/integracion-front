@@ -14,7 +14,7 @@
       <p>Fotografías</p>
     </div>
 
-    <img src="{{imagen['ruta_s3']}}" alt="" class="col-3" *ngFor="let imagen of imagenes" (click)="openImage()">
+    <img src="{{imagen['ruta_s3']}}" alt="" class="col-3" *ngFor="let imagen of imagenes; let i = index" (click)="openImage(i)">
 
     <div class="col-12 mt-2">
       <button class="btn btn-primary btn-sm float-right" (click)="adoptar()">Comenzar</button>

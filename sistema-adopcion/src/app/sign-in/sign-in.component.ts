@@ -30,6 +30,7 @@ export class SignInComponent implements OnInit {
       'username': this.userForm.value.userName,
       'pass': Md5.hashStr(this.userForm.value.password)
     };
+    console.log('user')
     this.authService.signIn(user).subscribe((res: any) => {
       if(res !== 'No user matches the provided information') {
         if (this.authService.setToken(res)) {

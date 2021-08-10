@@ -21,14 +21,16 @@ export class ModalMascotaComponent implements OnInit {
   ngOnInit() {
     this.mascota = this.data;
     this.imagenes = this.data['imagenes'];
+    console.log(this.imagenes)
   }
 
-  openImage() {
+  openImage(index) {
+    console.log(this.imagenes[index])
     this.dialogImg.open(ModalImgComponent, {
       width: 'auto',
       height: 'auto',
       panelClass: 'mat-dialog-imagenes',
-      data: this.imagenes
+      data: this.imagenes[index]
     })
   }
   
